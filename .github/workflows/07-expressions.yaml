@@ -1,4 +1,5 @@
 name: 07 - Expressions Example
+run-name: 07 - Expressions Example | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}
 
 on: 
     push:
