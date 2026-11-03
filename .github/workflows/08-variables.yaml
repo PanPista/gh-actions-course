@@ -1,0 +1,31 @@
+name: 08 - Variables Example
+
+on: 
+  push:
+  workflow_dispatch:
+
+env:
+  WORKFLOW_VAR: "workflow var"
+  OVERWRITTEN_VAR: "overwritten workflow"
+
+jobs:
+    echo:
+        runs-on: ubuntu-latest
+        env:
+            JOB_VAR: "job var"
+            OVERWRITTEN_VAR: "overwritten job"
+        steps:
+            - name: Print Env Variables
+              env:
+                STEP_VAR: "step var"
+                OVERWRITTEN_VAR: "overwritten step"
+              run: |
+                echo "Step env var: ${{ env.STEP_VAR }}"
+                echo "Job env var: ${{ env.JOB_VAR }}"
+                echo "Workflow env var: ${{ env.WORKFLOW_VAR }}"
+                echo "Overwritten env var: ${{ env.OVERWRITTEN_VAR }}"
+            - name: Overwritten job variable
+              env:
+                OVERWRITTEN_VAR: "overwritten at step level"
+              run: |
+                echo "Overwritten env var: ${{ env.OVERWRITTEN_VAR }}"
