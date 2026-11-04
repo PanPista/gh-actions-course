@@ -17,7 +17,6 @@ jobs:
             build-status: ${{ steps.build.outputs.status }}
             output1: ${{ steps.build.outputs.output1 }}
             output2: ${{ steps.build.outputs.output2 }}
-            mistate: ${{ steps.build.outputs.mistate }}
         steps:
             - name: Print GITHUB_OUTPUT path
               run: echo "$GITHUB_OUTPUT"
@@ -28,8 +27,6 @@ jobs:
                 echo "status=${{ github.event.inputs.build-status }}" >> "$GITHUB_OUTPUT"
                 echo "output1=value1" >> "$GITHUB_OUTPUT"
                 echo "output2=value2" >> "$GITHUB_OUTPUT"
-                cat "$GITHUB_OUTPUT"
-                echo "mistate=true" > "$GITHUB_OUTPUT"
                 cat "$GITHUB_OUTPUT"
     deploy:
         runs-on: ubuntu-latest
@@ -42,4 +39,4 @@ jobs:
               run: |
                 echo "Output1: ${{ needs.build.outputs.output1 }}"
                 echo "Output2: ${{ needs.build.outputs.output2 }}"
-                echo "Mistate: ${{ needs.build.outputs.mistate }}"
+        
