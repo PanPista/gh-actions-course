@@ -2,10 +2,6 @@ name: 16 - Environments
 
 on:
     workflow_dispatch:
-        inputs:
-            target-environment:
-                type: environment
-
 
 jobs:
     echo-staging:
