@@ -1,5 +1,4 @@
 name: 16 - Environments
-run-name: 16 - Environments | env - ${{ inputs.target-environment }}
 
 on:
     workflow_dispatch:
@@ -9,14 +8,30 @@ on:
 
 
 jobs:
-    echo:
+    echo-staging:
         runs-on: ubuntu-latest
-        environment: ${{ inputs.target-environment }}
+        environment: staging
         env:
             my_env_value: ${{ vars.MY_ENV_VALUE || 'default_value' }}
         steps:
           - name: Print target environment
             run: |
-              echo "Target environment: ${{ env.my_env_value }}"
+              echo "Deploying to ${{ env.my_env_value }}"
+    echo-tests:
+        runs-on: ubuntu-latest
+        needs: echo-staging
+        steps:
+          - name: E2E Tests
+            run: echo "Running E2E tests"
+    echo-prod:
+        runs-on: ubuntu-latest
+        needs: echo-tests
+        environment: prod
+        env:
+            my_env_value: ${{ vars.MY_ENV_VALUE || 'default_value' }}
+        steps:
+          - name: Print target environment
+            run: |
+              echo "Deploying to ${{ env.my_env_value }}"
 
 
