@@ -22,7 +22,7 @@ jobs:
             with:
                 node-version: ${{ matrix.node-version }}
           - name: Perform tests
-            run: 'echo "Running tests on OS: ${{ matrix.os }} with Node: ${{ matrix.node-version }}"''
+            run: 'echo "Running tests on OS: ${{ matrix.os }} with Node: ${{ matrix.node-version }}"'
           - name: Upload test results
             run: 'echo "Uploading test results for OS: ${{ matrix.os }} with Node: ${{ matrix.node-version }}"'
     include-examples:
