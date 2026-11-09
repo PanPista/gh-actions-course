@@ -32,7 +32,7 @@ jobs:
           - name: Upload test results
             run: 'echo "Uploading test results for OS: ${{ matrix.os }} with Node: ${{ matrix.node-version }}"'
     include-examples:
-        name: ${{ matrix.color }} - ${{ matrix.shape }} - ${{ matrix.size }}
+        name: ${{ matrix.color }} - ${{ matrix.shape }} - ${{ matrix.size }} - ${{ matrix.opacity }}
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -40,10 +40,16 @@ jobs:
                 shape: [circle, square]
                 size: [small, large]
                 include:
+                  - opacity: 50  
+                  - color: red
+                    opacity: 75
                   - color: red
                     shape: triangle
+                exclude:
+                    - color: green
+                      shape: circle
         steps:
           - name: Print matrix values
-            run: echo '${{ matrix.color }} - ${{ matrix.shape }} - ${{ matrix.size }}'
+            run: echo '${{ matrix.color }} - ${{ matrix.shape }} - ${{ matrix.size }} - ${{ matrix.opacity }}'
 
   
