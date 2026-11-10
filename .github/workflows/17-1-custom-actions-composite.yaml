@@ -1,6 +1,14 @@
 name: 17 - Custom Actions Composite Example
+run-name: 17 - 1 - Custom Actions Composite Example | env - ${{ inputs.target-env }}
 on:
     workflow_dispatch:
+      inputs:
+        target-env:
+          description: '"dev" or "prod". Controls whether dev dependecies are installed'
+          type: choice
+          options:
+            - dev
+            - prod
 
 env:
     working-directory: 17-custom-actions/react-app
@@ -18,6 +26,7 @@ jobs:
         with:
           node-version: 20.x
           working-directory: ${{ env.working-directory }}
+          target-env: ${{ github.event.inputs.target-env }}
       - name: Run Tests
         run: npm run test
       - name: Build Project
