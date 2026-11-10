@@ -1,5 +1,5 @@
 name: 17 - 2 - Custom Actions JS Example
-run-name: 17 - 2 - Custom Actions JS Example | BB - ${{ inputs.base-branch }} TB - ${{ inputs.target-branch }} WD - ${{ inputs.working-directory }}
+run-name: 17 - 2 - Custom Actions JS Example | BB - ${{ inputs.base-branch }} HB - ${{ inputs.head-branch }} WD - ${{ inputs.working-directory }}
 
 on:
     workflow_dispatch:
@@ -7,12 +7,15 @@ on:
             base-branch:
                 type: string
                 default: main
-            target-branch:
+            head-branch:
                 type: string
                 default: update-deps
             working-directory:
                 type: string
                 default: 17-custom-actions/react-app
+            debug:
+                type: boolean
+                default: false
 
 permissions:
   contents: write
@@ -27,6 +30,7 @@ jobs:
         uses: ./.github/actions/js_dependency-update
         with:
             base-branch: ${{ inputs.base-branch }}
-            target-branch: ${{ inputs.target-branch }}
+            head-branch: ${{ inputs.head-branch }}
             working-directory: ${{ inputs.working-directory }}
             gh-token: ${{ secrets.GITHUB_TOKEN }}
+            debug: ${{ inputs.debug }}

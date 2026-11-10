@@ -6,8 +6,8 @@ inputs:
     description: 'The branch used as the base for the dependency update checks'
     required: false
     default: main
-  target-branch:
-    description: 'The branch from which the PR is created'
+  head-branch:
+    description: 'The branch from which the PR is created (head branch)'
     required: false
     default: update-deps
   working-directory:
@@ -23,7 +23,3 @@ inputs:
 runs:
   using: node24
   main: index.js
-  # Sample index.js (vanilla JS, no build required):
-  #
-  #   console.log('Hello World');
-  
