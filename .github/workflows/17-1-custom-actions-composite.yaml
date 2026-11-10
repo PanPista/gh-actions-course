@@ -1,4 +1,4 @@
-name: 17 - Custom Actions Composite Example
+name: 17 - 1 - Custom Actions Composite Example
 run-name: 17 - 1 - Custom Actions Composite Example | env - ${{ inputs.target-env }}
 on:
     workflow_dispatch:
