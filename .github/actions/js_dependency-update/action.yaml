@@ -2,8 +2,6 @@ name: Update NPM Dependencies
 description: Check if there are updates for NPM dependencies and create a PR with the updated package*.json files.
 
 runs:
-  useing: # For more on JavaScript actions (including @actions/toolkit), see:
-  # https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-javascript-action
   using: node24
   main: index.js
   # Sample index.js (vanilla JS, no build required):
