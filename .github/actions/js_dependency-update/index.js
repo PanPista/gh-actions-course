@@ -55,7 +55,9 @@ async function run() {
 
     const gitStatus = await exec.getExecOutput('git status - s package*.json', [], commonExecOptions);
 
+    let updatesAvailable = false;
     if (gitStatus.stdout.length > 0) {
+        updatesAvailable = true;
         logger.debug(`Changes detected in package*.json files`);
         await setupGitConfig();
         await exec.exec(`git checkout -b ${headBranch}`, [], commonExecOptions);
@@ -83,7 +85,8 @@ async function run() {
     } else {
         logger.info(`No changes detected in package*.json files`);
     }
-
+    
+    core.setOutput('updates-available', updatesAvailable);
 }
 
 run()

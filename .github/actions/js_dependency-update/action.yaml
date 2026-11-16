@@ -20,6 +20,10 @@ inputs:
     description: 'Enable debug mode for the action to see messages in the console'
     default: 'false'
 
+outputs:
+  updates-available:
+    description: 'Indicates whether updates for NPM dependencies are available'
+
 runs:
   using: node24
   main: dist/index.js
