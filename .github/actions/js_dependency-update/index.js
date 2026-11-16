@@ -53,7 +53,7 @@ async function run() {
 
     await exec.exec('npm update', [], commonExecOptions);
 
-    const gitStatus = await exec.getExecOutput('git status - s package*.json', [], commonExecOptions);
+    const gitStatus = await exec.getExecOutput('git status -s package*.json', [], commonExecOptions);
 
     let updatesAvailable = false;
     if (gitStatus.stdout.length > 0) {
