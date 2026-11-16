@@ -29,5 +29,6 @@ jobs:
             max_retries: ${{ inputs.max_retries }}
             delay: ${{ inputs.delay }}
       - name: Print output
+        if: always()
         run: |
          echo "URL reachable: ${{ steps.ping-url.outputs.url_reachable }}"

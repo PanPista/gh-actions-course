@@ -4,7 +4,7 @@ import requests
 
 def set_output(filepath, key, value):
     with open(filepath, "a") as file:
-        file.write(f"{key}={value}, file=file")
+        file.write(f"{key}={value}")
 
 def ping_url(url, max_retries, delay):
     retries = 0
