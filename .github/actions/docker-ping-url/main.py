@@ -2,6 +2,10 @@ import os
 import time
 import requests
 
+def set_output(filepath, key, value):
+    with open(filepath, "a") as file:
+        file.write(f"{key}={value}, file=file")
+
 def ping_url(url, max_retries, delay):
     retries = 0
 
@@ -23,6 +27,8 @@ def run():
     delay = int(os.getenv("INPUT_DELAY", "5"))
 
     website_reachable = ping_url(url, max_retries, delay)
+
+    set_output(os.getenv("GITHUB_OUTPUT"), "url_reachable", str(website_reachable))
 
     if not website_reachable:
         raise Exception(f"Failed to reach URL: {url}")

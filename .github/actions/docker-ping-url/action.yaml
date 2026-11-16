@@ -13,6 +13,10 @@ inputs:
     description: The delay between retries in seconds.
     required: false
     default: '5'
+
+outputs:
+  url_reachable:
+    description: Indicates whether the URL was successfully pinged.
   
 runs:
   using: docker
