@@ -1,0 +1,19 @@
+name: Ping URL
+description: Pings a specified URL to check its availability.
+
+inputs:
+  url:
+    description: The URL to ping.
+    required: true
+  max_retries:
+    description: The maximum number of times to retry pinging the URL.
+    required: false
+    default: '10'
+  delay:
+    description: The delay between retries in seconds.
+    required: false
+    default: '5'
+  
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
