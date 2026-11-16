@@ -86,6 +86,7 @@ async function run() {
         logger.info(`No changes detected in package*.json files`);
     }
     
+    logger.debug(`Setting output for updates-available: ${updatesAvailable}`);
     core.setOutput('updates-available', updatesAvailable);
 }
 
