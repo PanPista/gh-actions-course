@@ -15,6 +15,10 @@ inputs:
     default: dev
     required: false
 
+outputs:
+  installed-dependencies:
+    description: 'Indicates whether dependencies were installed'
+    value: ${{ steps.cache.outputs.cache-hit != 'true' }}
 
 runs:
   using: "composite"

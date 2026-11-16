@@ -25,7 +25,7 @@ def run():
     website_reachable = ping_url(url, max_retries, delay)
 
     if not website_reachable:
-        print(f"Failed to reach URL: {url}")
+        raise Exception(f"Failed to reach URL: {url}")
     else:
         print(f"Successfully reached URL: {url}")
 
