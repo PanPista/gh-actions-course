@@ -4,8 +4,17 @@ on:
     workflow_dispatch:
         inputs:
             url:
+                type: choice
+                options:
+                  - 'https://google.com'
+                  - 'https://exampleinvalidcccccyyfdddd.com'
+                  - 'ddddddffd-vvvv'
+            max_retries:
                 type: string
-                default: 'https://google.com'
+                default: '10'
+            delay:
+                type: string
+                default: '5'
 
 jobs:
   ping-url:
@@ -16,3 +25,5 @@ jobs:
         uses: ./.github/actions/docker-ping-url
         with:
             url: ${{ inputs.url }}
+            max_retries: ${{ inputs.max_retries }}
+            delay: ${{ inputs.delay }}
