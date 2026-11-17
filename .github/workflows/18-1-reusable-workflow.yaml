@@ -1,0 +1,35 @@
+name: 18 - 1 - Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+        target-directory:
+          required: true
+          type: string
+    outputs:
+        build-status:
+          description: 'The status of the build'
+          value: ${{ jobs.deploy.outputs.build-status }}
+        url:
+          description: 'The URL of the deployed project'
+          value: ${{ jobs.deploy.outputs.url }}
+
+jobs:
+    deploy:
+      runs-on: ubuntu-latest
+      outputs:
+        build-status: ${{ steps.build.outputs.build-status }}
+        url: ${{ steps.deploy.outputs.url }}
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+        - name: Build
+          id: build
+          run: |
+            echo "Building the project using directory ${{ inputs.target-directory }}"
+            echo ""build-status=success" >> "$GITHUB_OUTPUT"
+        - name: Deploy
+          id: deploy
+          run: |
+            echo "Deploying the project..."
+            echo "url=https://www.google.com" >> "$GITHUB_OUTPUT"
