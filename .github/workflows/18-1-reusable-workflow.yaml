@@ -27,7 +27,7 @@ jobs:
           id: build
           run: |
             echo "Building the project using directory ${{ inputs.target-directory }}"
-            echo ""build-status=success" >> "$GITHUB_OUTPUT"
+            echo "build-status=success" >> "$GITHUB_OUTPUT"
         - name: Deploy
           id: deploy
           run: |
